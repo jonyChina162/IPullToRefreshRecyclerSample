@@ -96,7 +96,7 @@ public class PullToRefreshVerticalRecycler<T> extends PullToRefreshBase<Recycler
 	 * @param adapter
 	 * @param manager
 	 */
-        public void setAdapterAndLayoutManager(RecyclerView.Adapter adapter, RecyclerView.LayoutManager manager) {
+	public void setAdapterAndLayoutManager(RecyclerView.Adapter adapter, RecyclerView.LayoutManager manager) {
 		mRecyclerView.setAdapterAndLayoutManager(adapter, manager);
 	}
 
@@ -155,6 +155,10 @@ public class PullToRefreshVerticalRecycler<T> extends PullToRefreshBase<Recycler
 		} else {
 			super.setMode(Mode.PULL_FROM_START);
 		}
+	}
+
+	public LoadMoreMode getLoadMoreMode() {
+		return mMode;
 	}
 
 	@Override

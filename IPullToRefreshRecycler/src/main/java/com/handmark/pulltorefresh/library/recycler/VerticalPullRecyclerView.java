@@ -29,9 +29,9 @@ class VerticalPullRecyclerView<T> extends RecyclerView {
 	private long mAniDuration = 300;
 	private boolean mShowAni = true, mAlwaysShowAni;
 	private int mLastDisAniPosition = 5;
-    private HorizontalItemHelperCallBack mHorizontalItemHelperCallBack;
-    private boolean mCanSwipe;
-    private boolean mCanMove;
+	private HorizontalItemHelperCallBack mHorizontalItemHelperCallBack;
+	private boolean mCanSwipe;
+	private boolean mCanMove;
 
 	private class LoadMoreTask extends AsyncTask<Void, Void, List<T>> {
 		@Override
@@ -82,7 +82,7 @@ class VerticalPullRecyclerView<T> extends RecyclerView {
 	private void setWrapAdapter(Adapter adapter) {
 		mAdapter = new AnimatorWrapAdapter(adapter);
 		super.setAdapter(mAdapter);
-        mHorizontalItemHelperCallBack = new HorizontalItemHelperCallBack(mContext, mAdapter);
+		mHorizontalItemHelperCallBack = new HorizontalItemHelperCallBack(mContext, mAdapter);
 		ItemTouchHelper itemTouchHelper = new ItemTouchHelper(mHorizontalItemHelperCallBack);
 		itemTouchHelper.attachToRecyclerView(this);
 	}
@@ -91,7 +91,9 @@ class VerticalPullRecyclerView<T> extends RecyclerView {
 	public void onScrollStateChanged(int state) {
 		super.onScrollStateChanged(state);
 		// 当前不滚动，且不是正在刷新或加载数据
-		if (state == RecyclerView.SCROLL_STATE_IDLE && mLoadMoreListener != null && !mIsLoadMore && isLastItemVisible()) {
+		if (mParent.getLoadMoreMode() == PullToRefreshVerticalRecycler.LoadMoreMode.INNER_REFRESH
+				&& state == RecyclerView.SCROLL_STATE_IDLE && mLoadMoreListener != null && !mIsLoadMore
+				&& isLastItemVisible()) {
 			if (mParent.showFoot()) {
 				mIsLoadMore = true;
 				new LoadMoreTask().execute();
@@ -303,11 +305,11 @@ class VerticalPullRecyclerView<T> extends RecyclerView {
 		mLastDisAniPosition = lastDisAniPosition;
 	}
 
-    void setCanSwipe(boolean canSwipe){
-        mHorizontalItemHelperCallBack.setCanSwipe(canSwipe);
-    }
+	void setCanSwipe(boolean canSwipe) {
+		mHorizontalItemHelperCallBack.setCanSwipe(canSwipe);
+	}
 
-    void setCanMove(boolean canMove){
-        mHorizontalItemHelperCallBack.setCanMove(canMove);
-    }
+	void setCanMove(boolean canMove) {
+		mHorizontalItemHelperCallBack.setCanMove(canMove);
+	}
 }
