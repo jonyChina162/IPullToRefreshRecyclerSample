@@ -1,0 +1,99 @@
+apply plugin: 'maven'
+apply plugin: 'signing'
+
+def getRepositoryUrl() {
+    return hasProperty('repositoryUrl') ? property('repositoryUrl') : ""
+}
+
+def getRepositoryUsername() {
+    return hasProperty('repositoryUsername') ? property('repositoryUsername') : ""
+}
+
+def getRepositoryPassword() {
+    return hasProperty('repositoryPassword') ? property('repositoryPassword') : ""
+}
+
+def isReleaseBuild() {
+    return version.contains("SNAPSHOT") == false
+}
+
+uploadArchives {
+//    configuration = configurations.archives
+    repositories {
+        mavenDeployer {
+//            beforeDeployment {
+//                MavenDeployment deployment -> signing.signPom(deployment)
+//            }
+
+            repository(url: getRepositoryUrl()) {
+                authentication(userName: getRepositoryUsername(), password: getRepositoryPassword())
+            }
+
+            pom.project {
+                name POM_NAME
+                groupId POM_GROUP
+                artifactId POM_ARTIFACT_ID
+                description POM_DESCRIPTION
+                version POM_VERSION
+                packaging POM_PACKAGING
+
+//                licenses {
+//                    license {
+//                        name myLicense
+//                        url 'https://github.com/facebook/fresco/blob/master/LICENSE'
+//                    }
+//                }
+
+                developers {
+                    developer {
+                        id 'pwrd'
+                        name 'pwrd'
+                    }
+                }
+            }
+        }
+    }
+
+    task installArchives(type: Upload) {
+        description "Installs the artifacts to the local Maven repository."
+        configuration = configurations['archives']
+        repositories {
+            mavenDeployer {
+//                beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+                pom.groupId = POM_GROUP
+                pom.artifactId = POM_ARTIFACT_ID
+                pom.version = POM_VERSION
+                repository url: "file://${System.properties['user.home']}/.m2/repository"
+            }
+        }
+    }
+
+    signing {
+        required { isReleaseBuild() && gradle.taskGraph.hasTask("uploadArchives") }
+        sign configurations.archives
+    }
+
+
+    task androidSourcesJar(type: Jar) {
+        classifier = 'sources'
+        from android.sourceSets.main.java.srcDirs
+    }
+
+
+    task androidJavadoc(type: Javadoc) {
+        source = android.sourceSets.main.java.srcDirs
+        exclude '**/pom.xml'
+        exclude '**/proguard_annotations.pro'
+        classpath += files(android.bootClasspath)
+    }
+
+    task androidJavadocJar(type: Jar, dependsOn: androidJavadoc) {
+        classifier = 'javadoc'
+        from androidJavadoc.destinationDir
+    }
+
+    artifacts {
+        archives androidSourcesJar
+//        archives androidJavadocJar
+    }
+}

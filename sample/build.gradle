@@ -1,0 +1,46 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        applicationId "cn.pwrd.ipulltorefreshrecyclersample.sample"
+        minSdkVersion 11
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+}
+
+dependencies {
+
+    //    debugCompile leakCanary.debug
+
+    //    releaseCompile leakCanary.release
+//    compile project(':IPullToRefreshRecycler')
+    compile pullToRefreshRecyclerLib
+    compile supportDependencies.appCompat
+    compile supportDependencies.recycler
+    compile supportDependencies.supportAnnotation
+    compile supportDependencies.v4
+    compile supportDependencies.design
+    compile iconify.fontawesome
+    compile iconify.entypo
+    compile iconify.typicons
+    compile iconify.material
+    compile iconify.meteocons
+    compile iconify.weathericons
+    compile iconify.simplelineicons
+    compile iconify.ionicons
+}

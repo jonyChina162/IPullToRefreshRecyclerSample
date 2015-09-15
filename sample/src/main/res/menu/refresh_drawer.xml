@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/refresh_mode"
+        android:title="上拉模式">
+        <menu>
+            <item
+                android:id="@+id/pull"
+                android:title="pull" />
+            <item
+                android:id="@+id/load_more"
+                android:title="loadMode" />
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/ani_mode"
+        android:title="动画模式">
+        <menu>
+            <item android:title="FadeIn" />
+            <item android:title="FadeInDown" />
+            <item android:title="FadeInUp" />
+            <item android:title="FadeInLeft" />
+            <item android:title="FadeInRight" />
+            <item android:title="Landing" />
+            <item android:title="ScaleIn" />
+            <item android:title="ScaleInTop" />
+            <item android:title="ScaleInBottom" />
+            <item android:title="ScaleInLeft" />
+            <item android:title="ScaleInRight" />
+            <item android:title="FlipInTopX" />
+            <item android:title="FlipInBottomX" />
+            <item android:title="FlipInLeftY" />
+            <item android:title="FlipInRightY" />
+            <item android:title="SlideInLeft" />
+            <item android:title="SlideInRight" />
+            <item android:title="SlideInDown" />
+            <item android:title="SlideInUp" />
+            <item android:title="OvershootInRight" />
+            <item android:title="OvershootInLeft" />
+        </menu>
+
+    </item>
+</menu>

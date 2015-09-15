@@ -1,0 +1,59 @@
+apply plugin: 'com.android.library'
+
+def generatedSources = "$buildDir/generated-src"
+def generatedOutputDir = file("$generatedSources")
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        minSdkVersion 11
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    sourceSets {
+        main {
+            java {
+                srcDirs += generatedOutputDir
+            }
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+}
+
+dependencies {
+    compile supportDependencies.appCompat
+    compile supportDependencies.recycler
+}
+
+//task androidJavadoc(type: Javadoc) {
+//    source = android.sourceSets.main.java.srcDirs
+//    exclude '**/pom.xml'
+//    exclude '**/proguard_annotations.pro'
+//    classpath += files(android.bootClasspath)
+//}
+//task androidJavadocJar(type: Jar, dependsOn: androidJavadoc) {
+//    classifier = 'javadoc'
+//    from androidJavadoc.destinationDir
+//}
+//task androidSourcesJar(type: Jar) {
+//    classifier = 'sources'
+//    from android.sourceSets.main.java.srcDirs
+//}
+//artifacts {
+//    archives androidSourcesJar
+//    archives androidJavadocJar
+//}
+
+apply from: '../maven_push.gradle'

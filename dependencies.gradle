@@ -1,0 +1,38 @@
+ext {
+    supportLibrary = '22.2.1'
+
+//Support Libraries dependencies
+    supportDependencies = [
+            design           : "com.android.support:design:${supportLibrary}",
+            recycler         : "com.android.support:recyclerview-v7:${supportLibrary}",
+            cardView         : "com.android.support:cardview-v7:${supportLibrary}",
+            appCompat        : "com.android.support:appcompat-v7:${supportLibrary}",
+            supportAnnotation: "com.android.support:support-annotations:${supportLibrary}",
+            v4               : "com.android.support:support-v4:${supportLibrary}",
+            palette          : "com.android.support:palette-v7:${supportLibrary}"
+    ]
+
+    leakCanaryVersion = '1.3'
+
+    leakCanary = [
+            debug  : "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}",
+            release: "com.squareup.leakcanary:leakcanary-android-no-op:${leakCanaryVersion}"
+    ]
+
+    gson = "com.google.code.gson:gson:2.2.4"
+
+    iconifyVersion = '2.0.7'
+
+    iconify = [
+            fontawesome    : "com.joanzapata.iconify:android-iconify-fontawesome:${iconifyVersion}",
+            entypo         : "com.joanzapata.iconify:android-iconify-entypo:${iconifyVersion}",
+            typicons       : "com.joanzapata.iconify:android-iconify-typicons:${iconifyVersion}",
+            material       : "com.joanzapata.iconify:android-iconify-material:${iconifyVersion}",
+            meteocons      : "com.joanzapata.iconify:android-iconify-meteocons:${iconifyVersion}",
+            weathericons   : "com.joanzapata.iconify:android-iconify-weathericons:${iconifyVersion}",
+            simplelineicons: "com.joanzapata.iconify:android-iconify-simplelineicons:${iconifyVersion}",
+            ionicons       : "com.joanzapata.iconify:android-iconify-ionicons:${iconifyVersion}",
+    ]
+
+    pullToRefreshRecyclerLib = "com.handmark.pulltorefresh:pulltorefreshrecycler:1.0@aar"
+}

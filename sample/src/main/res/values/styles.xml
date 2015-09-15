@@ -1,0 +1,19 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowActionBarOverlay">false</item>
+        <!-- 主要文字颜色 -->
+        <item name="colorPrimary">#ffaa66cc</item>
+        <item name="colorAccent">?attr/colorAccent</item>
+
+        <!-- 默认switch颜色 -->
+        <item name="colorSwitchThumbNormal">#ffcc0000</item>
+        <item name="colorControlActivated">#ff669900</item>
+        <item name="dialogTheme">@style/Theme.AppCompat.Light.Dialog</item>
+        <item name="dividerDrawable">@drawable/recycler_divider</item>
+        <item name="dividerHeight">4dp</item>
+    </style>
+
+    <style name="AppTheme" parent="@style/AppBaseTheme" />
+</resources>
