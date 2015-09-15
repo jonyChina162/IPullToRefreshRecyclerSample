@@ -28,8 +28,8 @@ dependencies {
     //    debugCompile leakCanary.debug
 
     //    releaseCompile leakCanary.release
-//    compile project(':IPullToRefreshRecycler')
-    compile pullToRefreshRecyclerLib
+    compile project(':IPullToRefreshRecycler')
+//    compile pullToRefreshRecyclerLib
     compile supportDependencies.appCompat
     compile supportDependencies.recycler
     compile supportDependencies.supportAnnotation
