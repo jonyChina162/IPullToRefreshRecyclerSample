@@ -9,21 +9,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import cn.pwrd.ipulltorefreshrecyclersample.sample.util.ViewMapping;
-import cn.pwrd.ipulltorefreshrecyclersample.sample.util.ViewMappingUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@ViewMapping(id = R.layout.activity_main)
 public class MainActivity extends Activity {
-	@ViewMapping(id = R.id.recycler)
+
 	private RecyclerView mRecycler;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		ViewMappingUtil.mapView(this, this);
+		setContentView(R.layout.activity_main);
+		mRecycler = (RecyclerView) findViewById(R.id.recycler);
 		mRecycler.setAdapter(new Adapter(this));
 		mRecycler.setLayoutManager(new LinearLayoutManager(this));
 	}

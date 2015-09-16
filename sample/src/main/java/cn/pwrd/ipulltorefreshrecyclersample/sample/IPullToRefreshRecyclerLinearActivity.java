@@ -1,5 +1,6 @@
 package cn.pwrd.ipulltorefreshrecyclersample.sample;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,15 +8,12 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import cn.pwrd.ipulltorefreshrecyclersample.sample.util.DividerItemDecoration;
-import cn.pwrd.ipulltorefreshrecyclersample.sample.util.ViewMapping;
-import cn.pwrd.ipulltorefreshrecyclersample.sample.util.ViewMappingUtil;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.recycler.LoadMoreListener;
 import com.handmark.pulltorefresh.library.recycler.PullToRefreshVerticalRecycler;
@@ -25,19 +23,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-@ViewMapping(id = R.layout.activity_refresh_recycler)
-public class IPullToRefreshRecyclerLinearActivity extends AppCompatActivity {
+public class IPullToRefreshRecyclerLinearActivity extends Activity {
 	public static Intent getStartIntent(Context context) {
 		return new Intent(context, IPullToRefreshRecyclerLinearActivity.class);
 	}
 
-	@ViewMapping(id = R.id.pull_recycler)
 	private PullToRefreshVerticalRecycler<String> mRefreshRecycler;
-	@ViewMapping(id = R.id.appbar)
 	private Toolbar mTool;
-	@ViewMapping(id = R.id.drawerLayout)
 	private DrawerLayout mDrawer;
-	@ViewMapping(id = R.id.drawerNav)
 	private NavigationView mNav;
 
 	private MyRecyclerAdapter mAdapter;
@@ -46,7 +39,11 @@ public class IPullToRefreshRecyclerLinearActivity extends AppCompatActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		ViewMappingUtil.mapView(this, this);
+		setContentView(R.layout.activity_refresh_recycler);
+		mRefreshRecycler = (PullToRefreshVerticalRecycler) findViewById(R.id.pull_recycler);
+		mTool = (Toolbar) findViewById(R.id.appbar);
+		mDrawer = (DrawerLayout) findViewById(R.id.drawerLayout);
+		mNav = (NavigationView) findViewById(R.id.drawerNav);
 		initAppBar();
 
 		initDrawer();
@@ -146,12 +143,12 @@ public class IPullToRefreshRecyclerLinearActivity extends AppCompatActivity {
 	}
 
 	private void initAppBar() {
-		setSupportActionBar(mTool);
-
-		if (getSupportActionBar() != null) {
-			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-			getSupportActionBar().setHomeButtonEnabled(true);
-		}
+//		setSupportActionBar(mTool);
+//
+//		if (getSupportActionBar() != null) {
+//			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//			getSupportActionBar().setHomeButtonEnabled(true);
+//		}
 	}
 
 }

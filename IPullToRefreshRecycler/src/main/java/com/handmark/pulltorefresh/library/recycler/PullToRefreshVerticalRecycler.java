@@ -208,7 +208,7 @@ public class PullToRefreshVerticalRecycler<T> extends PullToRefreshBase<Recycler
 		int tHeight = (int) (mLoadMoreTxt.getTextSize() + 0.5f) + mLoadMoreTxt.getPaddingTop()
 				+ mLoadMoreTxt.getPaddingBottom();
 		mLoadMoreHeight = (dHeight > tHeight) ? dHeight : tHeight + mLoadMoreLayout.getPaddingTop()
-				+ mLoadMoreLayout.getPaddingBottom();
+				+ mLoadMoreLayout.getPaddingBottom() + 10;
 		addViewInternal(mLoadMoreLayout, getChildCount(), new LinearLayout.LayoutParams(
 				LinearLayout.LayoutParams.MATCH_PARENT, mLoadMoreHeight));
 	}
