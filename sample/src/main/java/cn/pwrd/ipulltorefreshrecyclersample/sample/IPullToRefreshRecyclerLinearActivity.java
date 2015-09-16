@@ -1,6 +1,5 @@
 package cn.pwrd.ipulltorefreshrecyclersample.sample;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +7,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class IPullToRefreshRecyclerLinearActivity extends Activity {
+public class IPullToRefreshRecyclerLinearActivity extends AppCompatActivity {
 	public static Intent getStartIntent(Context context) {
 		return new Intent(context, IPullToRefreshRecyclerLinearActivity.class);
 	}
@@ -143,12 +143,12 @@ public class IPullToRefreshRecyclerLinearActivity extends Activity {
 	}
 
 	private void initAppBar() {
-//		setSupportActionBar(mTool);
-//
-//		if (getSupportActionBar() != null) {
-//			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//			getSupportActionBar().setHomeButtonEnabled(true);
-//		}
+		setSupportActionBar(mTool);
+
+		if (getSupportActionBar() != null) {
+			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+			getSupportActionBar().setHomeButtonEnabled(true);
+		}
 	}
 
 }
