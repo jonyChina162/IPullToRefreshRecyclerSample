@@ -26,7 +26,9 @@ buildscript {
     }
 }
 
-allprojects {
+apply from: 'dependencies.gradle'
+
+subprojects {
     repositories {
         mavenLocal()
         maven {
@@ -43,6 +45,19 @@ allprojects {
 //        }
         jcenter()
     }
+
+//    configurations {
+//        javadocDeps
+//    }
+
+    dependencies {
+//        compile supportDependencies.supportAnnotation
+//        javadocDeps supportDependencies.supportAnnotation
+    }
+
+//    javadoc {
+//        classpath += configurations.javadocDeps
+//        options.addStringOption("sourcepath", "")
+//    }
 }
 
-apply from: 'dependencies.gradle'

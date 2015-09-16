@@ -37,6 +37,7 @@ public class IPullToRefreshRecyclerLinearActivity extends AppCompatActivity {
 	private int mLoadCount = 0;
 
 	@Override
+    @SuppressWarnings("unchecked")
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_refresh_recycler);
@@ -125,7 +126,8 @@ public class IPullToRefreshRecyclerLinearActivity extends AppCompatActivity {
 				try {
 					TimeUnit.SECONDS.sleep(1);
 				} catch (InterruptedException e) {
-
+                    //do nothing
+                    Thread.currentThread().interrupt();
 				}
 
 				if (mLoadCount++ < 3) {

@@ -84,7 +84,9 @@ uploadArchives {
         source = android.sourceSets.main.java.srcDirs
         exclude '**/pom.xml'
         exclude '**/proguard_annotations.pro'
-        classpath += files(android.bootClasspath)
+        classpath += files(android.bootClasspath.join(File.pathSeparator))
+//        classpath += configurations.javadocDeps
+        destinationDir = file("../javadoc/")
     }
 
     task androidJavadocJar(type: Jar, dependsOn: androidJavadoc) {

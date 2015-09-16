@@ -1,8 +1,5 @@
 apply plugin: 'com.android.library'
 
-def generatedSources = "$buildDir/generated-src"
-def generatedOutputDir = file("$generatedSources")
-
 android {
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
@@ -18,24 +15,21 @@ android {
         abortOnError false
     }
 
-    sourceSets {
-        main {
-            java {
-                srcDirs += generatedOutputDir
-            }
-        }
-    }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_7
     }
+
+
 }
 
 dependencies {
     compile supportDependencies.appCompat
     compile supportDependencies.recycler
+    compile supportDependencies.supportAnnotation
 }
+
+
 
 //task androidJavadoc(type: Javadoc) {
 //    source = android.sourceSets.main.java.srcDirs

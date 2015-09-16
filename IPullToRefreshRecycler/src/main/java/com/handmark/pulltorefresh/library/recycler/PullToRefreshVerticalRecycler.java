@@ -204,11 +204,12 @@ public class PullToRefreshVerticalRecycler<T> extends PullToRefreshBase<Recycler
 			return;
 		}
 		int dHeight = mLoadingDrawable.getIntrinsicHeight() + mLoadMoreImg.getPaddingTop()
-				+ mLoadMoreImg.getPaddingBottom();
-		int tHeight = (int) (mLoadMoreTxt.getTextSize() + 0.5f) + mLoadMoreTxt.getPaddingTop()
-				+ mLoadMoreTxt.getPaddingBottom();
+				+ mLoadMoreImg.getPaddingBottom() + 5;
+		int tHeight = (int) (mLoadMoreTxt.getTextSize() + 0.5f)
+				+ ((MarginLayoutParams) mLoadMoreTxt.getLayoutParams()).topMargin
+				+ ((MarginLayoutParams) mLoadMoreTxt.getLayoutParams()).bottomMargin + 5;
 		mLoadMoreHeight = (dHeight > tHeight) ? dHeight : tHeight + mLoadMoreLayout.getPaddingTop()
-				+ mLoadMoreLayout.getPaddingBottom() + 10;
+				+ mLoadMoreLayout.getPaddingBottom();
 		addViewInternal(mLoadMoreLayout, getChildCount(), new LinearLayout.LayoutParams(
 				LinearLayout.LayoutParams.MATCH_PARENT, mLoadMoreHeight));
 	}
